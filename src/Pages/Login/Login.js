@@ -103,8 +103,8 @@ const Login = () => {
                     <div className='mx-auto mb-2'>
                         <p>Or Sign In with</p>
                         <div className='flex justify-center  items-center mt-3'>
-                            {/* <button onClick={handleFacebookSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button> */}
-                            <button onClick={handleGoogleSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
+                            <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
+                            <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
                         </div>
                     </div>
                     <p className='text-center'>New to Dentistry Services? <Link to='/register' className='font-bold text-red-500'> Sign Up</Link> </p>
