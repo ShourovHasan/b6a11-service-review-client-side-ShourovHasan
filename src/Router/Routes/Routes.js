@@ -3,7 +3,7 @@ import Main from "../../Layout/Main/Main";
 import AddReviews from "../../Pages/AddReviews/AddReviews";
 import AddServices from "../../Pages/AddServices/AddServices";
 import Blog from "../../Pages/Blog/Blog";
-import Home from "../../Pages/Home/Home";
+import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 
