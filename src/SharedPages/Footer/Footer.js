@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/images/Logo/fav.webp'
 
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-black text-white flex justify-between p-32">
+            <footer className="footer bg-black text-white flex justify-between p-24">
                 <div>
-                    {/* <img src={logo}></img> */}
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <img src={logo} className="w-20" alt=''></img>
+                    <p>Dentistry Services<br />Providing reliable service since 2022</p>
                 </div>
                 <div>
                     <span className="footer-title">Services</span>
