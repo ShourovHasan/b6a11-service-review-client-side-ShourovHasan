@@ -5,12 +5,12 @@ import { initializeApp
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCUddjg44FZ2i5h4LpByjj8aKMfj0y9V34",
-  authDomain: "dentistry-services.firebaseapp.com",
-  projectId: "dentistry-services",
-  storageBucket: "dentistry-services.appspot.com",
-  messagingSenderId: "843588299368",
-  appId: "1:843588299368:web:bfbfafb2bdacd50582e9dd"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
