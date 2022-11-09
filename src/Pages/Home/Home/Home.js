@@ -1,12 +1,12 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
-import Services from '../Services/Services';
+import Services3 from '../Services/Services3';
 
 const Home = () => {
     return (
         <div className='mb-12'>
             <Banner></Banner>
-            <Services></Services>
+            <Services3></Services3>
         </div>
     );
 };
