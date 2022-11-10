@@ -10,8 +10,10 @@ import Services3 from "../../Pages/Home/Services/Services3";
 import Services from "../../Pages/Home/Services/Services";
 import ServiceDetails from "../../Pages/Home/Services/ServiceDetails";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
-
-
+import AddReview from "../../Pages/Review/AddReview";
+import Reviews from "../../Pages/MyReviews/Reviews";
+import UpdateReviews from "../../Pages/MyReviews/UpdateReviews";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addServices',
-                element: <AddServices></AddServices>
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute> 
             },
             {
                 path: '/services3',
@@ -54,8 +56,22 @@ const router = createBrowserRouter([
                 }
             },
             {
+                path: '/serviceReviews/:id',
+                element: <PrivateRoute><AddReview></AddReview></PrivateRoute>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/serviceReviews/${params.id}`)
+                }
+            },
+            {
+                path: '/updateReviews/:id',
+                element: <PrivateRoute><UpdateReviews></UpdateReviews></PrivateRoute> ,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/updateReviews/${params.id}`)
+                }
+            },
+            {
                 path: '/myReviews',
-                element: <MyReviews></MyReviews>
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             },
             {
                 path: '/blog',

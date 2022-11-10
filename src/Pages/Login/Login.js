@@ -5,7 +5,7 @@ import login from '../../assets/images/login_register/login_Register.png';
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 
 const Login = () => {
-    const { setUser, userLogin, googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { setUser, userLogin, loading, googleSignIn, facebookSignIn } = useContext(AuthContext);
 
     let navigate = useNavigate();
     let location = useLocation();
@@ -25,10 +25,27 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+                // get jwt token 
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                        navigate(from, { replace: true });
+                    })
+                    .catch(error => console.error(error))                
                 navigate(from, { replace: true });
-                console.log(currentUser);
+                // console.log(user);
+                // console.log(currentUser);
                 form.reset();
             })
+            
             .catch(error => {
                 console.error(error);
             })
@@ -45,6 +62,21 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+                // get jwt token 
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                        navigate(from, { replace: true });
+                    })
+                    .catch(error => console.error(error))
                 navigate(from, { replace: true });
                 console.log(currentUser);
             })
@@ -64,6 +96,21 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+                // get jwt token 
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                        navigate(from, { replace: true });
+                    })
+                    .catch(error => console.error(error))
                 navigate(from, { replace: true });
                 console.log(currentUser);
 
@@ -71,6 +118,11 @@ const Login = () => {
             .catch(error => {
                 console.error(error);
             })
+    }
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
     }
     return (
         <div className="my-20 hero">
@@ -102,7 +154,7 @@ const Login = () => {
                     </form>
                     <div className='mx-auto mb-2'>
                         <p>Or Sign In with</p>
-                        <div className='flex justify-center  items-center mt-3'>
+                        <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
                             <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
                         </div>

@@ -1,18 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    const { loading } = useContext(AuthContext);
 
     console.log(services);
     useEffect(() => {
         fetch('http://localhost:5000/services')
-            .then(res => res.json())
+            .then(res => {
+                
+                return res.json()
+            })
             .then(data => {
                 setServices(data)
             })
             .catch(error => console.log(error))
-    }, [])
+    }, [loading])
+
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
+    }
     return (
         <div className='my-20'>
             <div className='flex justify-center my-12'>

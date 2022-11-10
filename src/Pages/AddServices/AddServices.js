@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const AddServices = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleAddService = event => {
         event.preventDefault();
@@ -36,9 +38,9 @@ const AddServices = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('Ordered Successfully')
-                    alert('Ordered Successfully')
+                    toast.success('Ordered Successfully')                    
                     form.reset();
+                    navigate('/services')
                 }
             })
             .catch(error => console.error(error));        

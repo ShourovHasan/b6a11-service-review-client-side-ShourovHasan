@@ -3,13 +3,15 @@ import { FaStar } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Reviews from '../../MyReviews/Reviews';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const serviceDetails = useLoaderData();
     const { _id, serviceName, serviceDescription, photoURL, price, rating } = serviceDetails;
+    
     return (
-        <div className="w-2/3 mx-auto shadow-xl card card-compact bg-base-100">
+        <div className="w-2/3 mx-auto mb-5 shadow-xl card card-compact bg-base-100">
             <figure>
                 <PhotoProvider>
                     <PhotoView src={photoURL}>
@@ -24,9 +26,11 @@ const ServiceDetails = () => {
                     <p className=''>Price: ${price}</p>
                     <span className='flex items-center'><FaStar className='mr-2 text-orange-400'></FaStar> <span className='text-2xl'>{rating}</span></span>
                 </div>
-                <div className="text-xl card-actions">
-                    <Link to={`/service/${_id}`} className='w-full bg-blue-600 btn '>Details</Link>
-                </div>
+                
+            </div>
+            <Reviews serviceDetails={serviceDetails}></Reviews>
+            <div className="text-xl card-actions">
+                <Link to={`/serviceReviews/${_id}`} className='w-full bg-blue-600 btn '>Add Reviews</Link>
             </div>
         </div>
     );

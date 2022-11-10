@@ -10,6 +10,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [reviews, setReviews] = useState([]);
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -50,7 +51,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const authInfo = { user, setUser, loading, setLoading, createUser, logOut, userLogin, googleSignIn, updateUserProfile, facebookSignIn };
+    const authInfo = { user, setUser, loading, setLoading, createUser, logOut, userLogin, googleSignIn, updateUserProfile, facebookSignIn, reviews, setReviews };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

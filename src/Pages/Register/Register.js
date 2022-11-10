@@ -4,9 +4,8 @@ import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import signup from '../../assets/images/login_register/login_Register.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-
 const Register = () => {
-    const { setUser, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { setUser, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -83,6 +82,11 @@ const Register = () => {
                 console.error(error);
             })
     }
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
+    }
     return (
         <div className="my-20 hero">
             <div className="flex-col gap-20 hero-content lg:flex-row">
@@ -122,9 +126,9 @@ const Register = () => {
                     </form>
                     <div className='mx-auto mb-2'>
                         <p>Or Sign Up with</p>
-                        <div className='flex justify-center items-center mt-3'>
+                        <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
-                            <button onClick={handleFacebookSignIn} className=' text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
+                            <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
                         </div>
                     </div>
                     <p className='text-center'>Already have an account? <Link to='/login' className='font-bold text-red-500'> Login</Link> </p>
