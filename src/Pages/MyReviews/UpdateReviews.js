@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateReviews = () => {
     const { user } = useContext(AuthContext);  
+    useTitle('Update Review');
 
     const updateReviews = useLoaderData();
     const [uReviews, setUReviews] = useState(updateReviews);

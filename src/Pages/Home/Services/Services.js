@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 const Services = () => {
     const [services, setServices] = useState([]);
     const { loading } = useContext(AuthContext);
+    useTitle('Services');
 
     console.log(services);
     useEffect(() => {

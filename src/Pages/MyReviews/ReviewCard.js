@@ -7,8 +7,8 @@ const ReviewCard = ({ review }) => {
     const { _id, service, serviceName, servicePhoto, reviewerName, reviewerEmail, reviewerPhotoURL, reviewerFeedback, rating } = review;
     // console.log(review);
     return (
-        <div className="w-2/3 mx-auto shadow-xl card bg-base-100 border mb-2">
-            <div className="flex ml-4 mt-4 items-center">
+        <div className="w-2/3 mx-auto mb-2 border shadow-xl card bg-base-100">
+            <div className="flex items-center mt-4 ml-4">
                 <div className="mr-1">
                     {
                         reviewerPhotoURL ?
@@ -23,7 +23,7 @@ const ReviewCard = ({ review }) => {
                 </div>
                 <div>
                     <h3>{reviewerName}</h3>
-                    <h4 className='flex items-center'><FaStar className='text-orange-600 mr-1'></FaStar> <span>{rating}</span></h4>
+                    <h4 className='flex items-center'><FaStar className='mr-1 text-orange-500'></FaStar><span>{rating}</span></h4>
                 </div>              
                 
             </div>

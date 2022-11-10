@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ReviewItems from './ReviewItems';
 
 const MyReviews = () => {
     const { user, reviews, setReviews, logOut } = useContext(AuthContext);    
+    useTitle('My Reviews');
 
     // setLoading(false);
     useEffect(() => {
@@ -33,6 +36,7 @@ const MyReviews = () => {
                     if (data.deletedCount > 0) {
                         const remaining = reviews.filter(odr => odr._id !== id);
                         setReviews(remaining);
+                        toast.success('Item is successfully deleted.')
                     }
                 })
                 .catch(error => console.error(error))

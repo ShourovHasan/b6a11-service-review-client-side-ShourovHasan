@@ -31,7 +31,7 @@ const ServiceCard = ({ service }) => {
                     <span className='flex items-center'><FaStar className='mr-2 text-orange-400'></FaStar> <span className='text-2xl'>{rating}</span></span>
                 </div>
                 <div className="text-xl card-actions">
-                    <Link to={`/service/${_id}`} className='w-full bg-blue-600 btn '>Details</Link>
+                    <Link to={`/service/${_id}`} className='w-full bg-blue-600 btn '>View Details</Link>
                 </div>
             </div>
         </div>

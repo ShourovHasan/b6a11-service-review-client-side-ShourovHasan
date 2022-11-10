@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const AddReview = () => {
     const { user } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const AddReview = () => {
     const { _id, serviceName, photoURL } = serviceDetails;
 
     const navigate = useNavigate();
+    useTitle('Add Review');
     
     const handleReviews = event => {
         event.preventDefault();
@@ -65,7 +67,7 @@ const AddReview = () => {
                     <input type="radio" name="rating2" value='5' className="bg-orange-400 mask mask-star-2" defaultChecked />
                 </div>
                 <div className="mt-3 text-xl card-actions">
-                    <input type='submit' className='w-full bg-blue-600 btn' defaultValue='Add Review'></input>
+                    <input type='submit' className='w-full bg-blue-600 btn' value='Add Review'></input>
                 </div>
             </form>
         </div>

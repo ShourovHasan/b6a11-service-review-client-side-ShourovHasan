@@ -6,9 +6,6 @@ const Reviews = ({ serviceDetails }) => {
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
 
-    // const { _id } = serviceDetails;
-    // console.log(reviews);
-    // setLoading(false);
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?service=${serviceDetails?._id}`)
             .then(res => res.json())
@@ -17,7 +14,7 @@ const Reviews = ({ serviceDetails }) => {
     }, [serviceDetails?._id])
 
     return (
-        <div className='mb-10'>           
+        <div className='mb-10'> 
             {
                 reviews.map(review => <ReviewCard
                     key={review._id}

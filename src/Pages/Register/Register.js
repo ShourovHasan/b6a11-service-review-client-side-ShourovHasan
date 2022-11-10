@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import signup from '../../assets/images/login_register/login_Register.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { setUser, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const Register = () => {
 
     const navigate = useNavigate();
     let location = useLocation();
+    useTitle('Register');
 
 
     const handleSignup = event => {
