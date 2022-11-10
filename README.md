@@ -1,70 +1,13 @@
-# Getting Started with Create React App
+* Project Name: Dentistry Services
+* Live website link: https://dentistry-services.web.app
+* About our website: Our Dentistry Services online review website is a great way to find out what other patients think about their dental care provider. You can read reviews from other patients, compare providers, and find the best services for your needs.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Header and footer sections are shown for all pages on this website. And the header has the brand name as well as the logo, Home Page, Blog, Add Services, My Reviews and a profile pic with name and logout shown. And various services, copyright and contact facilities in the footer section below.
+2. The home page of this website, along with some important banners, shows some of the recently added services and we have a section on various facilities through treatment.
+3. Next is the blog page, with answers to frequently asked questions about ReactJS.Next is adding services through the Add Services page. Where service name, service image, price, rating and service description. So to add service, this option is kept.
+4. On the My Reviews page, the user can view the feedback on the services and all the feedbacks are displayed in descending order. Each feedback can be edited, deleted or desired.
+5. Then there is another interesting part, that feedback can be given on each service and recently added feedback will show first.
+6. It will be possible to register with full name, image url and email, password on the registration page. And in addition to login with email and password on the login page, it will also be possible to login with Google and Facebook.
+7. After login the user, profile picture will also be displayed in the heading and Add Service, My Reviews, logout option will also be displayed.
+8. Without login, can't add any review. But can possible to see others feedback under every services.
+9. This project works with some important hooks, libraries and frameworks. These include useState, useEffect, createContext, useContext, getAuth, signIn and SignOut, google authentication, facebook authentication, JWT secret token, and use the DaisyUI as a Tailwind Plugin.

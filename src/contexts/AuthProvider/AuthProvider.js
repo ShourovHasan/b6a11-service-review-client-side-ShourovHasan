@@ -48,6 +48,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const logOut = () => {
+        localStorage.removeItem('dentistry-Token');
         return signOut(auth);
     }
 

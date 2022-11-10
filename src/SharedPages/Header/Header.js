@@ -15,7 +15,8 @@ const Header = () => {
             })
     }
     const menuItems = <>
-        <li className='font-semibold'><NavLink to='/home'>Home</NavLink></li>        
+        <li className='font-semibold'><NavLink to='/home'>Home</NavLink></li>      
+        <li className='font-semibold'><NavLink to='/blog'>Blog</NavLink></li>
         {
             user?.email ?
                 <>
@@ -28,7 +29,7 @@ const Header = () => {
                     <li className='font-semibold'><NavLink to='/login'>Login</NavLink></li>
                 </>
         }
-        <li className='font-semibold'><NavLink to='/blog'>Blog</NavLink></li>
+        
         
     </>
     return (

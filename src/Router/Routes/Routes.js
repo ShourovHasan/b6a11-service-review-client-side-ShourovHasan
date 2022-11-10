@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addServices',
-                element: <PrivateRoute><AddServices></AddServices></PrivateRoute> 
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
             {
                 path: '/services3',
@@ -52,21 +52,21 @@ const router = createBrowserRouter([
                 path: '/service/:id',
                 element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/service/${params.id}`)
+                    return fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/service/${params.id}`)
                 }
             },
             {
                 path: '/serviceReviews/:id',
                 element: <PrivateRoute><AddReview></AddReview></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/serviceReviews/${params.id}`)
+                    return fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/serviceReviews/${params.id}`)
                 }
             },
             {
                 path: '/updateReviews/:id',
-                element: <PrivateRoute><UpdateReviews></UpdateReviews></PrivateRoute> ,
+                element: <PrivateRoute><UpdateReviews></UpdateReviews></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/updateReviews/${params.id}`)
+                    return fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/updateReviews/${params.id}`)
                 }
             },
             {

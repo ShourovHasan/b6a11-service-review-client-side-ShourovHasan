@@ -12,7 +12,7 @@ const AddReview = () => {
 
     const navigate = useNavigate();
     useTitle('Add Review');
-    
+
     const handleReviews = event => {
         event.preventDefault();
         const form = event.target;
@@ -20,7 +20,7 @@ const AddReview = () => {
         const reviewerEmail = user?.email || 'unregistered';
         const reviewerName = user?.displayName || 'unregistered';
         const reviewerPhotoURL = user?.photoURL || "Can't get User Photo";
-        
+
         const reviewerFeedback = form.review.value;
         const rating = form.rating2.value;
 
@@ -34,7 +34,7 @@ const AddReview = () => {
             reviewerFeedback: reviewerFeedback,
             rating: rating
         }
-        fetch('http://localhost:5000/addReviews', {
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/addReviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

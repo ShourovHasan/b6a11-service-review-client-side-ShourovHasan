@@ -11,9 +11,9 @@ const Services = () => {
 
     console.log(services);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/services')
             .then(res => {
-                
+
                 return res.json()
             })
             .then(data => {
@@ -39,7 +39,7 @@ const Services = () => {
                     }
                 </div>
             </div>
-            
+
         </div>
     );
 };

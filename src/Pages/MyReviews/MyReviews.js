@@ -5,12 +5,13 @@ import useTitle from '../../hooks/useTitle';
 import ReviewItems from './ReviewItems';
 
 const MyReviews = () => {
-    const { user, reviews, setReviews, logOut } = useContext(AuthContext);    
+    const { user, reviews, setReviews, logOut } = useContext(AuthContext);
     useTitle('My Reviews');
 
+    
     // setLoading(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewsByEmail?reviewerEmail=${user?.email}`, {
+        fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviewsByEmail?reviewerEmail=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('dentistry-Token')}`
             }
@@ -28,8 +29,8 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this order?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
-                method: 'DELETE',                
+            fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviews/${id}`, {
+                method: 'DELETE',
             })
                 .then(res => res.json())
                 .then(data => {
@@ -44,7 +45,7 @@ const MyReviews = () => {
     }
 
 
-    
+
     return (
         <div className='mb-10'>
             {/* <h2>You have Order: {orders.length}</h2> */}
@@ -77,7 +78,7 @@ const MyReviews = () => {
                     </div>
                     :
                     <div className='flex items-center justify-center text-5xl h-52'>
-                        <h2>No reviews were added</h2>                        
+                        <h2>No reviews were added</h2>
                     </div>
             }
         </div>

@@ -29,7 +29,7 @@ const AddServices = () => {
             serviceDescription: description
         }
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -40,19 +40,19 @@ const AddServices = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('Service is Successfully added')                    
+                    toast.success('Service is Successfully added')
                     form.reset();
                     navigate('/services')
                 }
             })
-            .catch(error => console.error(error));        
+            .catch(error => console.error(error));
     }
 
     return (
         <div className='my-10'>
             <form onSubmit={handleAddService} className='p-10 bg-base-200 rounded-xl'>
                 <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
-                    <input type="text" name="serviceName" placeholder="Service Name" className="w-full bg-white input input-ghost" required/>
+                    <input type="text" name="serviceName" placeholder="Service Name" className="w-full bg-white input input-ghost" required />
                     <input type="text" name="photoURL" placeholder="photoURL" className="w-full bg-white input input-ghost" required />
                     <input type="text" name="price" placeholder="Price" className="w-full bg-white input input-ghost" required />
                     <input type="text" name="email" placeholder="Your Email" className="w-full bg-white input input-ghost" defaultValue={user?.email} required />

@@ -7,14 +7,14 @@ const Reviews = ({ serviceDetails }) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${serviceDetails?._id}`)
+        fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviews?service=${serviceDetails?._id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
             .catch(error => console.error(error))
     }, [serviceDetails?._id])
 
     return (
-        <div className='mb-10'> 
+        <div className='mb-10'>
             {
                 reviews.map(review => <ReviewCard
                     key={review._id}

@@ -30,8 +30,25 @@ const Register = () => {
                 handleUpdateUserProfile(name, photoURL);
                 console.log(user);
                 form.reset();
-                window.location.reload(true);
-                navigate('/');
+                // window.location.reload(true);
+                const currentUser = {
+                    email: user.email
+                }
+                // get jwt token 
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                    })
+                    .catch(error => console.error(error))
+                    // navigate('/');
             })
             .catch(error => {
                 console.error(error);
@@ -61,6 +78,20 @@ const Register = () => {
                 const currentUser = {
                     email: user.email
                 }
+                // get jwt token 
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                    })
+                    .catch(error => console.error(error))
             })
             .catch(error => {
                 console.error(error);
@@ -78,6 +109,20 @@ const Register = () => {
                 const currentUser = {
                     email: user.email
                 }
+                // get jwt token 
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('dentistry-Token', data.token);
+                    })
+                    .catch(error => console.error(error))
 
             })
             .catch(error => {

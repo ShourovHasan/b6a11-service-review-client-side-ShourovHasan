@@ -7,7 +7,7 @@ const Services3 = () => {
 
     console.log(services3);
     useEffect(() => {
-        fetch('http://localhost:5000/recentServices')
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/recentServices')
             .then(res => res.json())
             .then(data => {
                 setServices3(data)
@@ -18,7 +18,7 @@ const Services3 = () => {
     return (
         <div className='my-20'>
             <div className='text-center'>
-                <h1 className="my-5 text-5xl font-bold">Our Recently Added Services</h1>                
+                <h1 className="my-5 text-5xl font-bold">Our Recently Added Services</h1>
             </div>
             <div className='flex justify-center my-12'>
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>

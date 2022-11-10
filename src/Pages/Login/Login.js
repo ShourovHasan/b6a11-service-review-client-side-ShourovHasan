@@ -28,7 +28,7 @@ const Login = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -41,13 +41,14 @@ const Login = () => {
                         localStorage.setItem('dentistry-Token', data.token);
                         navigate(from, { replace: true });
                     })
-                    .catch(error => console.error(error))                
+                    .catch(error => console.error(error))
                 navigate(from, { replace: true });
                 // console.log(user);
                 // console.log(currentUser);
+                // window.location.reload(true);
                 form.reset();
             })
-            
+
             .catch(error => {
                 console.error(error);
             })
@@ -65,7 +66,7 @@ const Login = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -79,7 +80,8 @@ const Login = () => {
                         navigate(from, { replace: true });
                     })
                     .catch(error => console.error(error))
-                navigate(from, { replace: true });
+                    navigate(from, { replace: true });
+                    // window.location.reload(true);
                 console.log(currentUser);
             })
             .catch(error => {
@@ -99,7 +101,7 @@ const Login = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -114,6 +116,7 @@ const Login = () => {
                     })
                     .catch(error => console.error(error))
                 navigate(from, { replace: true });
+                // window.location.reload(true);
                 console.log(currentUser);
 
             })

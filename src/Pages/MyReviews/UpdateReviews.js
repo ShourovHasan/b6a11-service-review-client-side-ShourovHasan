@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const UpdateReviews = () => {
-    const { user } = useContext(AuthContext);  
+    const { user } = useContext(AuthContext);
     useTitle('Update Review');
 
     const updateReviews = useLoaderData();
@@ -14,7 +14,7 @@ const UpdateReviews = () => {
     const navigate = useNavigate();
 
     console.log(uReviews);
-    
+
     const handleInputChange = event => {
         const field = event.target.name;
         const value = event.target.value;
@@ -27,7 +27,7 @@ const UpdateReviews = () => {
     const handleUpdateReviews = event => {
         event.preventDefault();
         // console.log(user);
-        fetch(`http://localhost:5000/updateReviews/${updateReviews._id}`, {
+        fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/updateReviews/${updateReviews._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
