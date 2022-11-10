@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
-    const { setUser, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { user, setUser, setLoading, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -47,11 +47,11 @@ const Register = () => {
                         console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
                     // navigate('/');
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             })
     }
     const handleUpdateUserProfile = (name, photoURL) => {
@@ -91,10 +91,10 @@ const Register = () => {
                         console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             })
     }
     const handleFacebookSignIn = event => {
@@ -122,14 +122,17 @@ const Register = () => {
                         console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
 
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             })
     }
-    if (loading) {
+    if ({ error }) {
+        setLoading(false);
+    }
+    else if (loading) {
         return <div className='flex items-center justify-center w-full h-96'>
             <button className="btn loading ">loading</button>
         </div>
@@ -170,12 +173,16 @@ const Register = () => {
                         <div className="mt-6 form-control">
                             <input type="submit" className="text-white bg-red-500 btn btn-warning " value="Sign Up" />
                         </div>
+                        <div className="text-red-600">
+                            {error}
+                        </div>
                     </form>
                     <div className='mx-auto mb-2'>
                         <p>Or Sign Up with</p>
                         <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
                             <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
+                            
                         </div>
                     </div>
                     <p className='text-center'>Already have an account? <Link to='/login' className='font-bold text-red-500'> Login</Link> </p>

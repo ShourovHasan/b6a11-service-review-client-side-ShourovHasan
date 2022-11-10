@@ -1,20 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import login from '../../assets/images/login_register/login_Register.png';
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import useTitle from '../../hooks/useTitle';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const { setUser, userLogin, loading, googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { user, setUser, userLogin, loading, setLoading, googleSignIn, facebookSignIn } = useContext(AuthContext);
+
+    const [error, setError] = useState(''); 
 
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     useTitle('Login');
 
+    // toast.error(error);
+
     const handleLogin = event => {
         event.preventDefault();
+        // setLoading(false);
 
         const form = event.target;
         const email = form.email.value;
@@ -24,6 +30,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                
                 const currentUser = {
                     email: user.email
                 }
@@ -41,7 +48,7 @@ const Login = () => {
                         localStorage.setItem('dentistry-Token', data.token);
                         navigate(from, { replace: true });
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
                 navigate(from, { replace: true });
                 // console.log(user);
                 // console.log(currentUser);
@@ -50,8 +57,8 @@ const Login = () => {
             })
 
             .catch(error => {
-                console.error(error);
-            })
+                setError(error.message);
+            })        
     }
     const handleGoogleSignIn = event => {
         event.preventDefault();
@@ -79,14 +86,15 @@ const Login = () => {
                         localStorage.setItem('dentistry-Token', data.token);
                         navigate(from, { replace: true });
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
                     navigate(from, { replace: true });
                     // window.location.reload(true);
                 console.log(currentUser);
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             })
+        
     }
     const handleFacebookSignIn = event => {
         event.preventDefault();
@@ -114,17 +122,21 @@ const Login = () => {
                         localStorage.setItem('dentistry-Token', data.token);
                         navigate(from, { replace: true });
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => console.error(error.message))
                 navigate(from, { replace: true });
                 // window.location.reload(true);
                 console.log(currentUser);
 
             })
             .catch(error => {
-                console.error(error);
+                setError(error.message);
             })
+        toast.error({error})
     }
-    if (loading) {
+    if ({error}) {
+        setLoading(false);
+    }
+    else if (loading) {
         return <div className='flex items-center justify-center w-full h-96'>
             <button className="btn loading ">loading</button>
         </div>
@@ -149,19 +161,21 @@ const Login = () => {
                                 <span className="label-text">Confirm Password</span>
                             </label>
                             <input type="password" name='password' placeholder="Your Password" className="input input-bordered" required />
-                            <label className="label">
-                                <Link className="label-text-alt link link-hover">Forgot password?</Link>
-                            </label>
+                            
                         </div>
                         <div className="mt-2 form-control">
                             <input type="submit" className="text-white bg-red-500 btn btn-warning " value="Login" />
                         </div>
+                        <p className="text-red-600 text-center">
+                            {error}
+                        </p>
                     </form>
                     <div className='mx-auto mb-2'>
                         <p>Or Sign In with</p>
                         <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
                             <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
+                            
                         </div>
                     </div>
                     <p className='text-center'>New to Dentistry Services? <Link to='/register' className='font-bold text-red-500'> Sign Up</Link> </p>
