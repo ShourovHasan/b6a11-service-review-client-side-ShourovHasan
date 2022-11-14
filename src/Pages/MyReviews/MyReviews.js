@@ -11,7 +11,7 @@ const MyReviews = () => {
 
     // setLoading(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewsByEmail?reviewerEmail=${user?.email}`, {
+        fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviewsByEmail?reviewerEmail=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('dentistry-Token')}`
             }
@@ -29,7 +29,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this order?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('dentistry-Token')}`

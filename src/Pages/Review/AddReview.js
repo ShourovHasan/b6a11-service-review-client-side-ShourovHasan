@@ -34,7 +34,7 @@ const AddReview = () => {
             reviewerFeedback: reviewerFeedback,
             rating: rating
         }
-        fetch('http://localhost:5000/addReviews', {
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/addReviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

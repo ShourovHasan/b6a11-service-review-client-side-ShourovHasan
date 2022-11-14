@@ -29,7 +29,7 @@ const AddServices = () => {
             serviceDescription: description
         }
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

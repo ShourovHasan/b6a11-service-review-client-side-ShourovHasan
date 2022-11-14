@@ -7,7 +7,7 @@ const Services3 = () => {
 
     console.log(services3);
     useEffect(() => {
-        fetch('http://localhost:5000/recentServices')
+        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/recentServices')
             .then(res => res.json())
             .then(data => {
                 setServices3(data)
