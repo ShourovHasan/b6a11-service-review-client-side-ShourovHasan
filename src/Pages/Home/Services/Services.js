@@ -11,7 +11,7 @@ const Services = () => {
 
     console.log(services);
     useEffect(() => {
-        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/services')
+        fetch('http://localhost:5000/services')
             .then(res => {
 
                 return res.json()

@@ -21,7 +21,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        
+
         console.log(name, photoURL, email, password)
         createUser(email, password)
             .then((result) => {
@@ -35,7 +35,7 @@ const Register = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -48,7 +48,7 @@ const Register = () => {
                         localStorage.setItem('dentistry-Token', data.token);
                     })
                     .catch(error => console.error(error.message))
-                    // navigate('/');
+                // navigate('/');
             })
             .catch(error => {
                 setError(error.message);
@@ -79,7 +79,7 @@ const Register = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -110,7 +110,7 @@ const Register = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -150,13 +150,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="Your Full Name" className="input input-bordered" required/>
+                            <input type="text" name='name' placeholder="Your Full Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photoURL' placeholder="Your Photo URL" className="input input-bordered" required/>
+                            <input type="text" name='photoURL' placeholder="Your Photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -182,7 +182,7 @@ const Register = () => {
                         <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
                             <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
-                            
+
                         </div>
                     </div>
                     <p className='text-center'>Already have an account? <Link to='/login' className='font-bold text-red-500'> Login</Link> </p>

@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 const Login = () => {
     const { user, setUser, userLogin, loading, setLoading, googleSignIn, facebookSignIn } = useContext(AuthContext);
 
-    const [error, setError] = useState(''); 
+    const [error, setError] = useState('');
 
     let navigate = useNavigate();
     let location = useLocation();
@@ -30,12 +30,12 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                
+
                 const currentUser = {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -58,7 +58,7 @@ const Login = () => {
 
             .catch(error => {
                 setError(error.message);
-            })        
+            })
     }
     const handleGoogleSignIn = event => {
         event.preventDefault();
@@ -73,7 +73,7 @@ const Login = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -87,14 +87,14 @@ const Login = () => {
                         navigate(from, { replace: true });
                     })
                     .catch(error => console.error(error.message))
-                    navigate(from, { replace: true });
-                    // window.location.reload(true);
+                navigate(from, { replace: true });
+                // window.location.reload(true);
                 console.log(currentUser);
             })
             .catch(error => {
                 setError(error.message);
             })
-        
+
     }
     const handleFacebookSignIn = event => {
         event.preventDefault();
@@ -109,7 +109,7 @@ const Login = () => {
                     email: user.email
                 }
                 // get jwt token 
-                fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -131,9 +131,9 @@ const Login = () => {
             .catch(error => {
                 setError(error.message);
             })
-        toast.error({error})
+        toast.error({ error })
     }
-    if ({error}) {
+    if ({ error }) {
         setLoading(false);
     }
     else if (loading) {
@@ -161,7 +161,7 @@ const Login = () => {
                                 <span className="label-text">Confirm Password</span>
                             </label>
                             <input type="password" name='password' placeholder="Your Password" className="input input-bordered" required />
-                            
+
                         </div>
                         <div className="mt-2 form-control">
                             <input type="submit" className="text-white bg-red-500 btn btn-warning " value="Login" />
@@ -175,7 +175,7 @@ const Login = () => {
                         <div className='flex items-center justify-center mt-3'>
                             <button onClick={handleGoogleSignIn} className='mr-4 text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaGoogle></FaGoogle></button>
                             <button onClick={handleFacebookSignIn} className='text-xl text-blue-600 border-none btn btn-circle bg-slate-100'><FaFacebookF></FaFacebookF></button>
-                            
+
                         </div>
                     </div>
                     <p className='text-center'>New to Dentistry Services? <Link to='/register' className='font-bold text-red-500'> Sign Up</Link> </p>

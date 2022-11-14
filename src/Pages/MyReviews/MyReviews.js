@@ -8,10 +8,10 @@ const MyReviews = () => {
     const { user, reviews, setReviews, logOut } = useContext(AuthContext);
     useTitle('My Reviews');
 
-    
+
     // setLoading(false);
     useEffect(() => {
-        fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviewsByEmail?reviewerEmail=${user?.email}`, {
+        fetch(`http://localhost:5000/reviewsByEmail?reviewerEmail=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('dentistry-Token')}`
             }
@@ -29,8 +29,11 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this order?');
         if (proceed) {
-            fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviews/${id}`, {
+            fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('dentistry-Token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {

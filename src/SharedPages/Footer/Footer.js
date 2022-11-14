@@ -7,7 +7,7 @@ const Footer = () => {
 
     console.log(services);
     useEffect(() => {
-        fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/recentServices')
+        fetch('http://localhost:5000/recentServices')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
