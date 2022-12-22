@@ -8,7 +8,7 @@ import './ServiceCard.css';
 const ServiceCard = ({ service }) => {
     const { _id, serviceName, serviceDescription, photoURL, price, rating } = service;
     return (
-        <div className="shadow-xl card card-compact w-96 bg-base-100">
+        <div className="w-11/12 mx-auto shadow-xl card card-compact bg-base-100">
             <figure>
                 <PhotoProvider>
                     <PhotoView src={photoURL}>

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { FaUser } from 'react-icons/fa';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const AddReview = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const serviceDetails = useLoaderData();
     const { _id, serviceName, photoURL } = serviceDetails;
 
@@ -51,7 +50,11 @@ const AddReview = () => {
                 }
             })
             .catch(error => console.error(error));
-
+    }
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
     }
     return (
         <div className='w-full mx-auto mb-12 lg:w-1/2 bg-base-200 rounded-xl md:w-2/3'>

@@ -9,7 +9,7 @@ const Services = () => {
     const { loading } = useContext(AuthContext);
     useTitle('Services');
 
-    console.log(services);
+    // console.log(services);
     useEffect(() => {
         fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/services')
             .then(res => {
@@ -30,7 +30,7 @@ const Services = () => {
     return (
         <div className='my-20'>
             <div className='flex justify-center my-12'>
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
+                <div className='grid w-11/12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7'>
                     {
                         services.map(service => <ServiceCard
                             key={service._id}

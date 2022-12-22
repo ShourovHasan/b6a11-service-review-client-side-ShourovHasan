@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import ReviewItems from './ReviewItems';
 
 const MyReviews = () => {
-    const { user, reviews, setReviews, logOut } = useContext(AuthContext);
+    const { user, reviews, loading, setReviews, logOut } = useContext(AuthContext);
     useTitle('My Reviews');
-
-
     // setLoading(false);
     useEffect(() => {
         fetch(`https://b6a11-service-review-server-side-shourovhasan.vercel.app/reviewsByEmail?reviewerEmail=${user?.email}`, {
@@ -46,11 +44,13 @@ const MyReviews = () => {
                 .catch(error => console.error(error))
         }
     }
-
-
-
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
+    }
     return (
-        <div className='mb-10'>
+        <div className='w-11/12 mx-auto mb-20'>
             {/* <h2>You have Order: {orders.length}</h2> */}
             {
                 reviews.length > 0 ?

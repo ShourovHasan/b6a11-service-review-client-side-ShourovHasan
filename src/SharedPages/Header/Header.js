@@ -33,7 +33,7 @@ const Header = () => {
         
     </>
     return (
-        <div className="py-12 mb-12 bg-gray-100 navbar m-h-20">
+        <div className="w-11/12 h-10 py-12 mx-auto mb-12 bg-gray-100 navbar">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -79,7 +79,9 @@ const Header = () => {
                 </div>
                 <Link to='/' className="h-16 text-xl normal-case btn btn-ghost">
                     <img className='max-h-14' src={logo} alt="" />
-                    <h1 className='ml-3 text-2xl lg:text-4xl'><span className='px-4 py-1 text-white bg-blue-600 rounded-xl'>Dentistry</span> <span className='text-blue-600'>Services</span> </h1>
+                    <h1 className='ml-3 md:text-2xl lg:text-4xl'>
+                        <span className='px-4 py-1 text-white bg-blue-600 rounded-xl'>Dentistry</span> <span className='text-blue-600'>Services</span>
+                    </h1>
                 </Link>
             </div>
             <div className="hidden navbar-end lg:flex">

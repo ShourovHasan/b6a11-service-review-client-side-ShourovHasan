@@ -5,7 +5,7 @@ import logo from '../../assets/images/Logo/fav.webp'
 const Footer = () => {
     const [services, setServices] = useState([]);
 
-    console.log(services);
+    // console.log(services);
     useEffect(() => {
         fetch('https://b6a11-service-review-server-side-shourovhasan.vercel.app/recentServices')
             .then(res => res.json())
@@ -16,10 +16,10 @@ const Footer = () => {
     }, [])
     return (
         <div>
-            <footer className="flex justify-between p-24 text-white bg-black footer">
+            <footer className="flex flex-col justify-between w-11/12 p-12 mx-auto text-white bg-black lg:p-24 footer lg:flex-row md:flex-row md:p-24">
                 <div>
                     <img src={logo} className="w-20" alt=''></img>
-                    <p>
+                    <p className='md:w-full'>
                         Dentistry Services<br />
                         Providing reliable service since 2022 <br />
                         Copyright @2022. All Rights Reserved by Dentistry Services
@@ -28,7 +28,7 @@ const Footer = () => {
                 <div>
                     <span className="footer-title">Services</span>
                     {
-                        services.map(service => <Link to='/services' className="link link-hover">{service.serviceName}</Link>)
+                        services.map(service => <Link key={service._id} to='/services' className="link link-hover">{service.serviceName}</Link>)
                     }
                 </div>
                 <div>

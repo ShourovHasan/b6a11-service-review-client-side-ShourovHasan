@@ -2,15 +2,16 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import signup from '../../assets/images/login_register/login_Register.png';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
-    const { user, setUser, setLoading, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
+    const { setUser, setLoading, loading, createUser, updateUserProfile, googleSignIn, facebookSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
-    let location = useLocation();
+    // let location = useLocation();
     useTitle('Register');
 
 
@@ -22,13 +23,13 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, photoURL, email, password)
+        // console.log(name, photoURL, email, password);
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
                 setUser(user);
                 handleUpdateUserProfile(name, photoURL);
-                console.log(user);
+                // console.log(user);
                 form.reset();
                 // window.location.reload(true);
                 const currentUser = {
@@ -44,8 +45,10 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
+                        toast.success('Successfully SignUp and Login')
+                        navigate('/');
                     })
                     .catch(error => console.error(error.message))
                 // navigate('/');
@@ -90,6 +93,8 @@ const Register = () => {
                     .then(data => {
                         console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
+                        toast.success('Successfully SignUp and Login')
+                        navigate('/');
                     })
                     .catch(error => console.error(error.message))
             })
@@ -121,6 +126,8 @@ const Register = () => {
                     .then(data => {
                         console.log(data);
                         localStorage.setItem('dentistry-Token', data.token);
+                        toast.success('Successfully SignUp and Login')
+                        navigate('/');
                     })
                     .catch(error => console.error(error.message))
 
@@ -129,21 +136,21 @@ const Register = () => {
                 setError(error.message);
             })
     }
-    if ({ error }) {
+    if (error) {
         setLoading(false);
     }
-    else if (loading) {
+    if (loading) {
         return <div className='flex items-center justify-center w-full h-96'>
             <button className="btn loading ">loading</button>
         </div>
     }
     return (
-        <div className="my-20 hero">
-            <div className="flex-col gap-20 hero-content lg:flex-row">
-                <div className="w-1/2 text-center lg:text-left">
+        <div className="w-11/12 mx-auto my-20 hero">
+            <div className="flex-col gap-20 hero-content lg:flex-row md:flex-row">
+                <div className="text-center lg:w-1/2 lg:text-left md:w-1/2">
                     <img src={signup} alt="" />
                 </div>
-                <div className="flex-shrink-0 w-1/2 max-w-sm py-5 shadow-2xl card bg-base-100">
+                <div className="flex-shrink-0 w-full py-5 shadow-2xl md:w-1/2 lg:w-1/2 card bg-base-100">
                     <h1 className="text-5xl font-bold text-center">Sign Up</h1>
                     <form onSubmit={handleSignup} className="card-body">
                         <div className="form-control">

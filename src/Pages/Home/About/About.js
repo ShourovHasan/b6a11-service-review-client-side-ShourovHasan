@@ -4,13 +4,13 @@ import img2 from '../../../../src/assets/images/banner/2.jpg';
 
 const About = () => {
     return (
-        <div className="mb-20 hero">
-            <div className="flex-col-reverse hero-content lg:flex-row-reverse">
-                <div className='relative w-1/2'>
+        <div className="mb-32 hero">
+            <div className="flex-col-reverse mx-auto hero-content lg:flex-row-reverse">
+                <div className='relative w-11/12 mx-auto lg:w-1/2'>
                     <img src={img1} className="w-4/5 h-full rounded-lg shadow-2xl" alt="" />
                     <img src={img2} className="absolute w-3/5 border-8 border-white rounded-full shadow-2xl right-5 top-1/2" alt="" />
                 </div>
-                <div className='w-1/2'>
+                <div className='w-11/12 mx-auto lg:w-1/2'>
                     <h1 className="mb-10 text-5xl font-bold">
                         No More <br />
                         Dental Problem <br />

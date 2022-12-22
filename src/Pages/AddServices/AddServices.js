@@ -49,7 +49,7 @@ const AddServices = () => {
     }
 
     return (
-        <div className='my-10'>
+        <div className='w-11/12 mx-auto my-10'>
             <form onSubmit={handleAddService} className='p-10 bg-base-200 rounded-xl'>
                 <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
                     <input type="text" name="serviceName" placeholder="Service Name" className="w-full bg-white input input-ghost" required />

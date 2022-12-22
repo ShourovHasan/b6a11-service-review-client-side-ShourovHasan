@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const UpdateReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
     useTitle('Update Review');
 
     const updateReviews = useLoaderData();
@@ -13,7 +13,7 @@ const UpdateReviews = () => {
     const { reviewerFeedback } = uReviews;
     const navigate = useNavigate();
 
-    console.log(uReviews);
+    // console.log(uReviews);
 
     const handleInputChange = event => {
         const field = event.target.name;
@@ -21,7 +21,7 @@ const UpdateReviews = () => {
         const newReview = { ...uReviews };
         newReview[field] = value;
         setUReviews(newReview);
-        console.log(newReview);
+        // console.log(newReview);
     }
 
     const handleUpdateReviews = event => {
@@ -38,11 +38,16 @@ const UpdateReviews = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success('Review updated successfully!')
-                    console.log(data);
+                    // console.log(data);
                     navigate('/myReviews');
                 }
 
             })
+    }
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
     }
     return (
         <div className='w-full mx-auto mb-12 lg:w-1/2 bg-base-200 rounded-xl md:w-2/3'>

@@ -7,14 +7,18 @@ import useTitle from '../../../hooks/useTitle';
 import Reviews from '../../MyReviews/Reviews';
 
 const ServiceDetails = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const serviceDetails = useLoaderData();
     const { _id, serviceName, serviceDescription, photoURL, price, rating } = serviceDetails;
 
     useTitle('Service Details');
-    
+    if (loading) {
+        return <div className='flex items-center justify-center w-full h-96'>
+            <button className="btn loading ">loading</button>
+        </div>
+    }
     return (
-        <div className="w-2/3 mx-auto mb-5 shadow-xl card card-compact bg-base-100">
+        <div className="mx-auto my-10 mb-5 shadow-xl lg:w-2/3 card card-compact bg-base-100 md:w-11/12 xs:w-11/12 sm:w-11/12">
             <figure>
                 <PhotoProvider>
                     <PhotoView src={photoURL}>
@@ -24,7 +28,7 @@ const ServiceDetails = () => {
             </figure>
             <div className="card-body">
                 <h2 className="flex justify-center card-title">{serviceName}</h2>
-                <p className='Service_Description'>{serviceDescription}</p>
+                <p className='text-3xl text-justify'>{serviceDescription}</p>
                 <div className='flex items-center justify-between text-xl'>
                     <p className=''>Price: ${price}</p>
                     <span className='flex items-center'><FaStar className='mr-2 text-orange-400'></FaStar> <span className='text-2xl'>{rating}</span></span>
