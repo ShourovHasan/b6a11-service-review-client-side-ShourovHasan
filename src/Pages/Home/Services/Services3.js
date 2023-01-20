@@ -18,7 +18,8 @@ const Services3 = () => {
     return (
         <div className='my-20'>
             <div className='text-center'>
-                <h1 className="my-5 text-5xl font-bold">Our Recently Added Services</h1>
+                {/* <h1 className="my-5 text-5xl font-bold">Our Recently Added Services</h1> */}
+                <h1 className="text-5xl font-bold text-center divider divider-primary">Recently Added Services</h1>
             </div>
             <div className='flex justify-center mx-auto my-12'>
                 <div className='grid w-11/12 grid-cols-1 mx-auto md:grid-cols-2 xl:grid-cols-3 lg:gap-7 md:gap-3'>

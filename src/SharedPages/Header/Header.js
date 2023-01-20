@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import logo from '../../assets/images/Logo/fav.webp'
-
+import logo from '../../assets/images/Logo/fav.webp';
+import pLogo from '../../assets/images/login_register/plogo.png'
+import { FaUserTie } from "react-icons/fa";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -96,14 +97,17 @@ const Header = () => {
                                         {
                                             user?.photoURL ?
                                                 <>
-                                                    <img className='rounded-full' style={{ height: '32px' }} src={user?.photoURL} alt="" />
+                                                    <img className='rounded-full' style={{ height: '32px' }} src={user.photoURL} alt="" />
                                                 </>
                                                 :
-                                                <></>
+                                                <>
+                                                    <img src={pLogo} alt=''></img>
+                                                    {/* <FaUserTie></FaUserTie> */}
+                                                </>
                                         }
                                     </Link>
                                 </label>
-                                <ul tabIndex={0} className="w-40 p-2 mt-3 text-white bg-gray-400 shadow menu menu-compact dropdown-content bg-base-100 rounded-box">
+                                <ul tabIndex={0} className="w-40 p-2 mt-3 text-white bg-gray-400 shadow menu menu-compact dropdown-content rounded-box">
                                     <li className='mx-auto'><Link>{user?.displayName}</Link></li>
                                     <li className='mx-auto'>
                                         {
